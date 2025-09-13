@@ -74,7 +74,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* Hero Section - Enhanced SEO with more keywords */}
       <header className="hero">
         <h1>Free Online Background Remover - Remove BG from Image Instantly with AI</h1>
         <p className="hero-desc">AI Clear BG is the ultimate free online background remover tool. Remove background from image effortlessly with AI precision. Ideal for eCommerce, social media, graphic design, and more. No signup, unlimited usage, premium quality!</p>
@@ -84,7 +83,6 @@ function App() {
         </div>
       </header>
 
-      {/* Features Section - Expanded for SEO and traffic engagement */}
       <section className="features">
         <h2>Why AI Clear BG is the Best Free Background Remover Online</h2>
         <div className="features-grid">
@@ -115,7 +113,6 @@ function App() {
         </div>
       </section>
 
-      {/* Upload Section */}
       <section className="upload-section" onDrop={handleDrop} onDragOver={(e) => e.preventDefault()}>
         <h2>Remove Background from Image Online - Upload Now</h2>
         <div className="drop-zone">
@@ -130,7 +127,6 @@ function App() {
         {error && <p className="error">{error}</p>}
       </section>
 
-      {/* Results Section - Download and Share Features */}
       {processedImage && (
         <section className="result-section">
           <h2>Your AI-Processed Transparent Image</h2>
@@ -143,7 +139,6 @@ function App() {
         </section>
       )}
 
-      {/* FAQ Section - Expanded for SEO depth */}
       <section className="faq">
         <h2>Frequently Asked Questions about Free Background Remover</h2>
         <div className="faq-item">
@@ -164,7 +159,6 @@ function App() {
         </div>
       </section>
 
-      {/* Footer - Added social links for traffic */}
       <footer className="footer">
         <p>&copy; 2025 AI Clear BG - Ultimate Free Online Background Remover. AI-Powered for Premium Quality.</p>
         <p><a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Service</a> | Follow us on <a href="https://twitter.com">X</a> | <a href="https://facebook.com">Facebook</a></p>
