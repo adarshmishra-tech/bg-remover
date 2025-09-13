@@ -1,12 +1,22 @@
 services:
   - type: web
-    name: bg-remover-api
-    runtime: python
-    buildCommand: ""
-    startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
+    name: aiclearbg-backend
+    env: python
+    plan: standard  # Use a high-CPU or GPU plan for better performance
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    autoDeploy: true
     envVars:
       - key: PYTHON_VERSION
-        value: 3.10
-      - key: MODEL_PATH
-        value: u2net.pth
-    plan: free
+        value: 3.9  # Adjust based on your needs
+    healthCheckPath: /health  # Optional: Add health check endpoint in main.py if needed
+
+  - type: web
+    name: aiclearbg-frontend
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: build
+    autoDeploy: true
+    envVars:
+      - key: REACT_APP_BACKEND_URL
+        sync: false  # Set to the backend service URL after deployment (e.g., https://aiclearbg-backend.onrender.com)
