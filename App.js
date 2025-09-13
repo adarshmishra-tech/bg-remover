@@ -130,7 +130,7 @@ function App() {
         {error && <p className="error">{error}</p>}
       </section>
 
-      {/* Results Section - Added share button for traffic boost */}
+      {/* Results Section - Download and Share Features */}
       {processedImage && (
         <section className="result-section">
           <h2>Your AI-Processed Transparent Image</h2>
