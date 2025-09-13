@@ -19,6 +19,6 @@ services:
     autoDeploy: true
     envVars:
       - key: NODE_VERSION
-        value: 18.16.0  # Specify Node.js version for react-scripts compatibility
+        value: 18.20.4  # Latest LTS version, compatible with react-scripts@5.0.1
       - key: REACT_APP_BACKEND_URL
         sync: false  # Set to backend URL after deployment (e.g., https://aiclearbg-backend.onrender.com)
