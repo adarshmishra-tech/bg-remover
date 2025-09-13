@@ -75,13 +75,13 @@ def process_image_sync(contents: bytes, filename: str) -> bytes:
         # Inference
         with torch.no_grad():
             outputs = model(input_tensor)
-            # U2Net returns tuple of 7 feature maps; use the first one (d1) for better saliency in updated model handling
-            prediction = outputs[0]  # Updated to use d1 for finer details and better accuracy
+            # U2Net returns tuple of 7 feature maps; use the first one (d1) for better saliency
+            prediction = outputs[0]  # Finer details and better accuracy
             mask = torch.sigmoid(prediction).squeeze().cpu().numpy()
 
-        # Normalize and threshold mask (adjusted threshold for premium quality)
+        # Normalize and threshold mask (adjusted for premium quality)
         mask = (mask - mask.min()) / (mask.max() - mask.min())  # Normalize
-        mask = (mask > 0.6).astype(np.uint8)  # Slightly higher threshold for cleaner edges
+        mask = (mask > 0.6).astype(np.uint8)  # Higher threshold for cleaner edges
 
         # Resize mask to original size with better interpolation
         mask_pil = Image.fromarray(mask * 255).resize(orig_size, Image.LANCZOS)
@@ -108,7 +108,7 @@ async def remove_background(
     Async endpoint to remove background from uploaded image using local U2Net model.
     Validates file type and size, processes via U2Net, returns processed image.
     """
-    # Input validation: file type (added WEBP support for more formats)
+    # Input validation: file type (added WEBP support)
     if file.content_type not in ["image/jpeg", "image/png", "image/webp"]:
         raise HTTPException(status_code=400, detail={"error": "Only JPEG, PNG, and WEBP files are supported."})
     
