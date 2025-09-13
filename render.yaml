@@ -2,14 +2,14 @@ services:
   - type: web
     name: aiclearbg-backend
     env: python
-    plan: standard  # Use a high-CPU or GPU plan for better performance
+    plan: standard  # Use high-CPU or GPU plan for better performance
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     autoDeploy: true
     envVars:
       - key: PYTHON_VERSION
-        value: 3.9  # Adjust based on your needs
-    healthCheckPath: /health  # Optional: Add health check endpoint in main.py if needed
+        value: 3.9
+    healthCheckPath: /health
 
   - type: web
     name: aiclearbg-frontend
@@ -18,5 +18,7 @@ services:
     staticPublishPath: build
     autoDeploy: true
     envVars:
+      - key: NODE_VERSION
+        value: 18.16.0  # Specify Node.js version for react-scripts compatibility
       - key: REACT_APP_BACKEND_URL
-        sync: false  # Set to the backend service URL after deployment (e.g., https://aiclearbg-backend.onrender.com)
+        sync: false  # Set to backend URL after deployment (e.g., https://aiclearbg-backend.onrender.com)
